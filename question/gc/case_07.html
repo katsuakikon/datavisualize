@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>７．数値データの表示フォーマットを変更する</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // 以下のページでフォーマット変換処理を探してみよう
+            // https://google-developers.appspot.com/chart/interactive/docs/reference#numberformatter
+            // 回答の記載位置は自由です。
+            // ★★　3桁ごとに「,」、末尾に「円」がつくようにしてみよう。　★★
+
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', 1000000, 400000],
+            ['2005', 1170000, 460000],
+            ['2006', 660000, 1120000],
+            ['2007', 1030000, 540000]
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: '数値データの表示フォーマットを変更する',
+            vAxis: {
+                title: 'Year',
+                titleTextStyle: {
+                    color: 'red'
+                }
+            }
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

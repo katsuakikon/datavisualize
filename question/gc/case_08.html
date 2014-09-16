@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>８．棒グラフの色を変更する</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // 以下のページでデータの記述例を探してみよう
+            // https://google-developers.appspot.com/chart/interactive/docs/gallery/barchart#Colors
+
+            // ★問2では表示設定領域に色指定をしましたが、今回はデータに対して直接指定してください。
+
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', 1000, 400],
+            ['2005', 1170, 460],
+            ['2006', 660, 1120],
+            ['2007', 1030, 540]
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: '棒グラフの色を変更する',
+            vAxis: {
+                title: 'Year',
+                titleTextStyle: {
+                    color: 'red'
+                }
+            }
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

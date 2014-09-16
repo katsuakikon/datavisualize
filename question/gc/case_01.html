@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>１．グラフの描画エリアのサイズを変更する</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', 1000, 400],
+            ['2005', 1170, 460],
+            ['2006', 660, 1120],
+            ['2007', 1030, 540]
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        // 以下のページで使えるオプションを探そう!
+        // https://google-developers.appspot.com/chart/interactive/docs/gallery/barchart#Configuration_Options
+        var options = {
+            title: 'グラフの描画エリアのサイズを変更する'
+            // ※※※ 設定内容はここに記載 ※※※ 配列なのでカンマを忘れずに
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

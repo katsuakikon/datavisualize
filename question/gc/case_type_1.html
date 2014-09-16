@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>グラフ種別：パイチャート</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // 以下のページで必要となるデータの構成を理解しよう！
+            // https://google-developers.appspot.com/chart/interactive/docs/gallery/piechart
+            // データサンプル
+            /*
+            ['Year', 'Sales', 'Expenses', 'Age'],
+            ['2004', 1000, 400, 34],
+            ['2005', 1170, 460, 88],
+            ['2006', 660, 1120, 50],
+            ['2007', 1030, 540, 23]
+            */
+
+            // ★パイチャートに適したデータ配列を作ってみよう。　描画処理領域のチャート指定も忘れずに！
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: 'グラフ種別：パイチャート'
+        };
+
+        // ========== 描画処理領域 ========== 
+        // ★★ このままだとBarChartが表示される。 ★★
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>グラフ種別：コンボチャート（折れ線入り）</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // 以下のページで必要となるデータの構成を理解しよう！
+            // https://google-developers.appspot.com/chart/interactive/docs/gallery/combochart
+            // データサンプル
+            /*
+            ['Year', 'Sales', 'Expenses', 'Age'],
+            ['2004', 1000, 400, 34],
+            ['2005', 1170, 460, 88],
+            ['2006', 660, 1120, 50],
+            ['2007', 1030, 540, 23]
+            */
+
+            // ★コンボチャートに適したデータ配列を作ってみよう。　折れ線の指定も忘れずに！
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: 'グラフ種別：コンボチャート（折れ線入り）'
+            // ★棒グラフ、折れ線グラフの指定オプションはここに記載します。
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

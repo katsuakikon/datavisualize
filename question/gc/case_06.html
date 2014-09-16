@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>６．棒グラフの棒を追加する</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // 以下のページで必要となるデータの構成を理解しよう！
+            // https://google-developers.appspot.com/chart/interactive/docs/gallery/barchart#Data_Format
+
+            // 2005年以降のデータ行を追加してみよう。
+            // Sales以外のデータ列を追加してみよう。
+            // ・・・3箇所意地悪してます。他の問題サンプルを見ずに考えてみましょう。
+
+            // 回答はここに記載してください。
+            ['Year', 'Sales']
+            [2004, '1000']
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: 'Company Performance',
+            vAxis: {
+                title: '年度',
+                titleTextStyle: {
+                    color: 'red'
+                }
+            }
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>
