@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>グラフ種別：パイチャート</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // ★解答例です。
+            ['年度', '20代', '30代', '平均'],
+            ['2004', 1000, 400, 700],
+            ['2005', 1170, 460, 815],
+            ['2006', 660, 1120, 860],
+            ['2007', 1030, 540, 785]
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: '年度別受講者数',
+            seriesType: "bars",
+            series: {2: {type: "line"}}
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

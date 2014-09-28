@@ -1,0 +1,44 @@
+<html>
+
+<head>
+    <title>４．ツールチップを非表示にする</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', 1000, 400],
+            ['2005', 1170, 460],
+            ['2006', 660, 1120],
+            ['2007', 1030, 540]
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: 'ツールチップを非表示にする',
+            // ★tooltipは軸と違いデフォルトで表示されるので、非表示にしたい場合は以下のように設定します。
+            tooltip: {
+                trigger: 'none' 
+            }
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

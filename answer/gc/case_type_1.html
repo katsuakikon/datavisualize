@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>グラフ種別：パイチャート</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // ★解答例です。
+            ['Age', 'count'],
+            ['50代', 100],
+            ['40代', 250],
+            ['30代', 1720],
+            ['20代', 1540]
+        ]);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: '受講年齢の割合'
+        };
+
+        // ========== 描画処理領域 ========== 
+        // ★★ PieChartを使います。 ★★
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>

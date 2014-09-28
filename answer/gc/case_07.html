@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>７．数値データの表示フォーマットを変更する</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+    google.load("visualization", "1", {
+        packages: ["corechart"]
+    });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        // ========== データ設定領域 ========== 
+        var data = google.visualization.arrayToDataTable([
+            // 設定方法は2通りあります。
+            // ★1.データにあらかじめフォーマット済み文字列を設定する。
+            // 1カラムに対して {v: 値, f: 値}　という設定が行えます。
+            // vはvalue　fはformattedValue を意味します。
+            ['Year', 'Sales', 'Expenses'],
+            ['2004', {v:1000000, f:'1,000,000円'}, 400000],
+            ['2005', {v:1170000, f:'1,170,000円'}, 460000],
+            ['2006', {v:660000, f:'660,000円'}, 1120000],
+            ['2007', {v:1030000, f:'1,030,000円'}, 540000]
+        ]);
+
+        // ★2.数値列にフォーマット形式を設定する。
+        // 完全にこっちのほうがスマートですね。しかし、個別に条件を指定したい場合などは1のタイミングでしかできません。
+        var formatter = new google.visualization.NumberFormat({
+            pattern: '#,###.#', suffix: '円'
+        });
+        formatter.format(data, 2);
+
+        // ========== 表示設定領域 ========== 
+        var options = {
+            title: 'Company Performance',
+            vAxis: {
+                title: 'Year',
+                titleTextStyle: {
+                    color: 'red'
+                }
+            }
+        };
+
+        // ========== 描画処理領域 ========== 
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
+    </script>
+</head>
+
+<body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+</body>
+
+</html>
